@@ -1,7 +1,7 @@
 # High Performance Modular Training
 
 ![Python Version](https://img.shields.io/badge/python-3.13-blue.svg)
-[![Code Quality](https://github.com/beding/high_performance_modular_training/actions/workflows/code-quality.yaml/badge.svg)](https://github.com/lefameuxbeding/high_performance_modular_training/actions/workflows/code-quality.yaml)
+[![Code Quality](https://github.com/lefameuxbeding/high_performance_modular_training/actions/workflows/code-quality.yaml/badge.svg)](https://github.com/lefameuxbeding/high_performance_modular_training/actions/workflows/code-quality.yaml)
 
 Educational framework for high-performance LLM training.
 
