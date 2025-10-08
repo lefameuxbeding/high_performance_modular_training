@@ -1,0 +1,39 @@
+---
+name: Code Quality
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+jobs:
+  lint-and-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install dependencies
+        run: |
+          # Install project dependencies from uv.lock
+          uv sync
+      - name: Run Ruff linter
+        run: uv run ruff check .
+      - name: Run Ruff formatter check
+        run: uv run ruff format --check .
+      - name: Run Pyright
+        run: uv run pyright
+      - name: Run yamllint
+        run: uv run yamllint -c .yamllint .
+      - name: Run Taplo (TOML formatter check)
+        run: uv run taplo fmt --check
+      - name: Run Taplo (TOML linter)
+        run: uv run taplo lint

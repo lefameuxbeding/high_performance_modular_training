@@ -1,0 +1,135 @@
+[project]
+name = "hpmt"
+version = "0.1.0"
+description = "Educational framework for high-performance LLM training."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "MIT" }
+dependencies = ["torch>=2.8.0", "triton>=3.4.0"]
+
+[dependency-groups]
+dev = ["pre-commit>=4.3.0", "pyright>=1.1.406", "ruff>=0.14.0", "taplo>=0.9.3", "yamllint>=1.37.1"]
+
+# ============================================================================
+# Ruff Configuration
+# ============================================================================
+[tool.ruff]
+# Set the maximum line length
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.13+
+target-version = "py313"
+
+# Exclude common directories
+exclude = [
+  ".bzr",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".git-rewrite",
+  ".hg",
+  ".mypy_cache",
+  ".nox",
+  ".pants.d",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  "__pypackages__",
+  "_build",
+  "buck-out",
+  "build",
+  "dist",
+  "node_modules",
+  "venv",
+]
+
+[tool.ruff.lint]
+# Enable specific rule sets
+select = [
+  "E",   # pycodestyle errors
+  "W",   # pycodestyle warnings
+  "F",   # pyflakes
+  "I",   # isort
+  "B",   # flake8-bugbear
+  "C4",  # flake8-comprehensions
+  "UP",  # pyupgrade
+  "ARG", # flake8-unused-arguments
+  "SIM", # flake8-simplify
+]
+
+# Rules to ignore
+ignore = [
+  "E501", # line too long (handled by formatter)
+]
+
+# Allow fix for all enabled rules (when `--fix` is provided)
+fixable = ["ALL"]
+unfixable = []
+
+# Allow unused variables when underscore-prefixed
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.format]
+# Use double quotes for strings
+quote-style = "double"
+
+# Indent with spaces
+indent-style = "space"
+
+# Respect magic trailing commas
+skip-magic-trailing-comma = false
+
+# Automatically detect line endings
+line-ending = "auto"
+
+[tool.ruff.lint.isort]
+known-first-party = ["hpmt"]
+
+# ============================================================================
+# Pyright Configuration
+# ============================================================================
+[tool.pyright]
+# Include and exclude patterns
+include = ["hpmt"]
+exclude = ["**/__pycache__", "**/node_modules", ".venv", "venv", "build", "dist", ".ruff_cache"]
+
+# Type checking mode: "off", "basic", or "strict"
+typeCheckingMode = "basic"
+
+# Python version to use for type checking
+pythonVersion = "3.13"
+
+# Report settings
+reportMissingImports = true
+reportMissingTypeStubs = false
+reportUnusedImport = true
+reportUnusedClass = true
+reportUnusedFunction = true
+reportUnusedVariable = true
+reportDuplicateImport = true
+reportOptionalSubscript = true
+reportOptionalMemberAccess = true
+reportOptionalCall = true
+reportOptionalIterable = true
+reportOptionalContextManager = true
+reportOptionalOperand = true
+reportTypedDictNotRequiredAccess = false
+reportConstantRedefinition = true
+reportIncompatibleMethodOverride = true
+reportIncompatibleVariableOverride = true
+
+# Diagnostic rule settings
+reportGeneralTypeIssues = true
+reportPropertyTypeMismatch = true
+reportFunctionMemberAccess = true
+reportPrivateUsage = true
+reportTypeCommentUsage = true
+reportInvalidTypeVarUse = true
+
+# Use strict list/dict inference
+strictListInference = true
+strictDictionaryInference = true
+strictSetInference = true

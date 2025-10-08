@@ -1,0 +1,72 @@
+# Taplo Configuration
+# This file configures the Taplo TOML formatter and linter
+
+# Exclude patterns (uses gitignore-style patterns)
+exclude = [
+  # Version control
+  ".git/**",
+
+  # Virtual environments
+  ".venv/**",
+  "venv/**",
+  "env/**",
+
+  # Python cache directories
+  "__pycache__/**",
+  ".pytest_cache/**",
+  ".mypy_cache/**",
+  ".ruff_cache/**",
+  "*.egg-info/**",
+  ".eggs/**",
+
+  # Build directories
+  "build/**",
+  "dist/**",
+  "target/**",
+
+  # IDE directories
+  ".vscode/**",
+  ".idea/**",
+
+  # Dependencies
+  "node_modules/**",
+
+  # Misc
+  ".tox/**",
+  ".nox/**",
+]
+
+# Formatting rules
+[formatting]
+# Align entries in tables
+align_entries = false
+
+# Align comments
+align_comments = true
+
+# Add trailing commas to arrays
+array_trailing_comma = true
+
+# Automatically expand arrays
+array_auto_expand = true
+
+# Keep arrays compact when possible
+compact_arrays = true
+
+# Compact inline tables
+compact_inline_tables = false
+
+# Maximum allowed blank lines
+allowed_blank_lines = 1
+
+# Column width (soft limit)
+column_width = 100
+
+# Indent with 2 spaces
+indent_string = "  "
+
+# Use LF line endings
+crlf = false
+
+# Reorder keys alphabetically (set to true if you want sorted keys)
+reorder_keys = false
