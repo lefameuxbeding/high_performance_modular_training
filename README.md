@@ -49,3 +49,22 @@ uv add --dev package-name
 # Update dependencies
 uv lock --upgrade
 ```
+
+### Testing
+
+The project includes two types of tests:
+
+**Functional Tests**: Core functionality and correctness tests
+```bash
+# Run all functional tests (excludes benchmarks)
+uv run pytest -m "not benchmark" -v
+
+# Run all tests including benchmarks
+uv run pytest -v
+```
+
+**Benchmark Tests**: Performance and optimization tests
+```bash
+# Run only benchmark tests
+uv run pytest -m benchmark -v
+```
