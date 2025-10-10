@@ -30,7 +30,7 @@ repos:
 
   # Pyright - Python type checker
   - repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.390  # Use the latest version from https://github.com/RobertCraigie/pyright-python/releases
+    rev: v1.1.406  # Use the latest version from https://github.com/RobertCraigie/pyright-python/releases
     hooks:
       - id: pyright
 
