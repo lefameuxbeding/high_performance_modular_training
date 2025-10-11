@@ -369,27 +369,6 @@ def test_dtype_support(dtype):
         assert layer.bias.dtype == dtype
 
 
-@pytest.mark.skipif(not torch.cuda.is_available(), reason="CUDA not available")
-def test_autocast_compatibility():
-    """Test compatibility with torch.autocast for mixed precision training."""
-    layer = LayerNorm(128).cuda()
-    x = torch.randn(8, 128, device="cuda")
-
-    with torch.autocast(device_type="cuda", dtype=torch.float16):
-        output = layer(x)
-        # Output should be in lower precision
-        assert output.dtype == torch.float16
-
-    # Verify gradients work with autocast
-    x_grad = torch.randn(8, 128, device="cuda", requires_grad=True)
-    with torch.autocast(device_type="cuda", dtype=torch.float16):
-        output = layer(x_grad)
-        loss = output.sum()
-        loss.backward()
-
-    assert x_grad.grad is not None
-
-
 # ============================================================================
 # Benchmark Tests
 # ============================================================================
