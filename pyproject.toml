@@ -5,10 +5,18 @@ description = "Educational framework for high-performance LLM training."
 readme = "README.md"
 requires-python = ">=3.13"
 license = { text = "MIT" }
-dependencies = ["torch>=2.8.0", "triton>=3.4.0"]
+dependencies = ["numpy>=2.3.3", "torch>=2.8.0", "triton>=3.4.0"]
 
 [dependency-groups]
-dev = ["pre-commit>=4.3.0", "pyright>=1.1.406", "ruff>=0.14.0", "taplo>=0.9.3", "yamllint>=1.37.1"]
+dev = [
+  "pre-commit>=4.3.0",
+  "pyright>=1.1.406",
+  "pytest>=8.4.2",
+  "pytest-benchmark>=5.1.0",
+  "ruff>=0.14.0",
+  "taplo>=0.9.3",
+  "yamllint>=1.37.1",
+]
 
 # ============================================================================
 # Ruff Configuration
@@ -95,6 +103,10 @@ known-first-party = ["hpmt"]
 # Include and exclude patterns
 include = ["hpmt"]
 exclude = ["**/__pycache__", "**/node_modules", ".venv", "venv", "build", "dist", ".ruff_cache"]
+
+# Virtual environment configuration
+venvPath = "."
+venv = ".venv"
 
 # Type checking mode: "off", "basic", or "strict"
 typeCheckingMode = "basic"
