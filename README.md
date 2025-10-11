@@ -49,3 +49,30 @@ uv add --dev package-name
 # Update dependencies
 uv lock --upgrade
 ```
+
+### Testing
+
+First, install the package in editable mode:
+```bash
+uv pip install -e .
+```
+
+The project includes two types of tests:
+
+**Functional Tests**: Core functionality and correctness tests
+```bash
+# Run all functional tests (excludes benchmarks)
+uv run pytest -m "not benchmark" -v
+```
+
+**Benchmark Tests**: Performance and optimization tests
+```bash
+# Run only benchmark tests
+uv run pytest -m benchmark -v
+```
+
+**All Tests**: Functional and benchmark tests
+```bash
+# Run all tests
+uv run pytest -v
+```

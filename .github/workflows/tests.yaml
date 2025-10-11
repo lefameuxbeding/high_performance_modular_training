@@ -1,0 +1,30 @@
+---
+name: Tests
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install dependencies
+        run: |
+          # Install project dependencies from uv.lock and install package in editable mode
+          uv sync
+          uv pip install -e .
+      - name: Run tests (excluding benchmarks)
+        run: uv run pytest -m "not benchmark" -v
