@@ -1,7 +1,7 @@
 import pytest
 import torch
 
-from hpmt.models.activations.layernorm import LayerNorm
+from hpmt.models.modules.layernorm import LayerNorm
 
 # ============================================================================
 # Fixtures
