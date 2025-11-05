@@ -29,7 +29,7 @@ class Linear(nn.Module):
         else:
             self.register_parameter("bias", None)
 
-    def forward(self, x: torch.Tensor):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         output = x @ self.weight
 
         if self.bias is not None:
