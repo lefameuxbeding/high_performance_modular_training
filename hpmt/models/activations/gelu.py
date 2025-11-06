@@ -1,7 +1,10 @@
 import torch
 import torch.nn as nn
 
+from hpmt.models.activations import register_activation
 
+
+@register_activation("gelu")
 class GELU(nn.Module):
     def __init__(self):
         super().__init__()
