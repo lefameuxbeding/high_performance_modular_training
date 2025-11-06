@@ -35,7 +35,7 @@ class LayerNorm(nn.Module):
             self.register_parameter("weight", None)
             self.register_parameter("bias", None)
 
-    def forward(self, x: torch.Tensor):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         mean = x.mean(dim=self.dim, keepdim=True)
         var = x.var(dim=self.dim, unbiased=False, keepdim=True)
 
